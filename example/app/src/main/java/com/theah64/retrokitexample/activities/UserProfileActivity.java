@@ -1,8 +1,6 @@
 package com.theah64.retrokitexample.activities;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.theah64.retrokit.activities.BaseDynamicActivity;
@@ -14,10 +12,8 @@ import com.theah64.retrokitexample.rest.responses.GetUserProfileResponse;
 
 import butterknife.BindView;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-public class UserProfileActivity extends BaseDynamicActivity<GetUserProfileResponse> {
+public class UserProfileActivity extends BaseDynamicActivity<GetUserProfileResponse, APIInterface> {
 
     @BindView(R.id.tvUserId)
     TextView tvUserId;
@@ -34,18 +30,7 @@ public class UserProfileActivity extends BaseDynamicActivity<GetUserProfileRespo
         setContentViewWithButterKnife(R.layout.activity_user_profile);
         enableBackNavigationWithTitle("Profile");
 
-        final APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
-        apiInterface.getUserProfile().enqueue(new Callback<GetUserProfileResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<GetUserProfileResponse> call, @NonNull Response<GetUserProfileResponse> response) {
-                onSuccess(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<GetUserProfileResponse> call, Throwable t) {
-                Log.d(getLogTag(), "Failed");
-            }
-        });
+        loadData();
     }
 
 
@@ -56,4 +41,27 @@ public class UserProfileActivity extends BaseDynamicActivity<GetUserProfileRespo
         tvUserName.setText(user.getName());
         tvEmail.setText(user.getEmail());
     }
+
+    @Override
+    protected int getMainViewID() {
+        return R.id.llMain;
+    }
+
+    @Override
+    protected String getLoadingMessage() {
+        return "Loading profile";
+    }
+
+    @Override
+    protected APIInterface getAPIInterface() {
+        return RetrofitClient.getClient().create(APIInterface.class);
+    }
+
+
+    @Override
+    protected Call<GetUserProfileResponse> getCall(APIInterface apiInterface) {
+        return apiInterface.getUserProfile();
+    }
+
+
 }

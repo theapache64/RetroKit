@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">retrokit</string>
+    <string name="RETRY">RETRY</string>
 </resources>

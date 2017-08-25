@@ -8,7 +8,7 @@ import com.theah64.retrokitexample.model.data.GetUserProfileData;
  * Created by theapache64 on 25/8/17.
  */
 
-public class GetUserProfileResponse extends BaseAPIResponse {
+public class GetUserProfileResponse extends BaseAPIResponse<GetUserProfileData> {
 
     @SerializedName("data")
     private final GetUserProfileData data;

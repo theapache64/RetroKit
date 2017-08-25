@@ -8,7 +8,9 @@
     tools:context="com.theah64.retrokitexample.activities.UserProfileActivity">
 
 
+
     <LinearLayout
+        android:id="@+id/llMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

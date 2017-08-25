@@ -5,8 +5,11 @@ import android.os.Bundle;
 import com.theah64.retrokit.activities.BaseRecyclerViewActivity;
 import com.theah64.retrokit.retro.BaseAPIResponse;
 import com.theah64.retrokitexample.R;
+import com.theah64.retrokitexample.rest.APIInterface;
 
-public class MoviesActivity extends BaseRecyclerViewActivity {
+import retrofit2.Call;
+
+public class MoviesActivity extends BaseRecyclerViewActivity<APIInterface> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,4 +23,23 @@ public class MoviesActivity extends BaseRecyclerViewActivity {
         return R.id.rvMovies;
     }
 
+    @Override
+    protected int getMainViewID() {
+        return 0;
+    }
+
+    @Override
+    protected String getLoadingMessage() {
+        return null;
+    }
+
+    @Override
+    protected APIInterface getAPIInterface() {
+        return null;
+    }
+
+    @Override
+    protected Call<BaseAPIResponse<G>> getCall(APIInterface apiInterface) {
+        return null;
+    }
 }
