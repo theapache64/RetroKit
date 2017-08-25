@@ -6,16 +6,18 @@ import android.widget.TextView;
 import com.theah64.retrokit.activities.BaseDynamicActivity;
 import com.theah64.retrokit.retro.BaseAPIResponse;
 import com.theah64.retrokit.retro.RetrofitClient;
+import com.theah64.retrokit.utils.ProgressManager;
 import com.theah64.retrokitexample.R;
 import com.theah64.retrokitexample.model.User;
 import com.theah64.retrokitexample.model.data.GetUserProfileData;
 import com.theah64.retrokitexample.rest.APIInterface;
-import com.theah64.retrokitexample.rest.responses.GetUserProfileResponse;
 
 import butterknife.BindView;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class UserProfileActivity extends BaseDynamicActivity<BaseAPIResponse<GetUserProfileData>,APIInterface> {
+public class UserProfileActivity extends BaseDynamicActivity {
 
     @BindView(R.id.tvUserId)
     TextView tvUserId;
@@ -32,12 +34,24 @@ public class UserProfileActivity extends BaseDynamicActivity<BaseAPIResponse<Get
         setContentViewWithButterKnife(R.layout.activity_user_profile);
         enableBackNavigationWithTitle("Profile");
 
+
         loadData();
     }
 
+    public void loadData() {
 
+        final ProgressManager pm = new ProgressManager(this, getMainViewID(), new ProgressManager.Callback() {
+            @Override
+            public void onRetryButtonClicked() {
+                loadData();
+            }
+        });
+        pm.showLoading(getLoadingMessage());
 
-    @Override
+        getCall(getAPIInterface()).enqueue();
+    }
+
+    
     public void onSuccess(BaseAPIResponse<GetUserProfileData> response) {
         final User user = response.getData().getUser();
         tvUserId.setText("#" + user.getId());
@@ -55,15 +69,6 @@ public class UserProfileActivity extends BaseDynamicActivity<BaseAPIResponse<Get
         return "Loading profile";
     }
 
-    @Override
-    protected APIInterface getAPIInterface() {
-        return RetrofitClient.getClient().create(APIInterface.class);
-    }
-
-    @Override
-    protected Call<GetUserProfileData> getCall(APIInterface apiInterface) {
-        return apiInterface.getUserProfile();
-    }
 
 
 }
