@@ -15,11 +15,13 @@ public class BaseAPIResponse<D> {
     private final String message;
 
     @SerializedName("data")
-    D data;
+    private final D data;
 
-    public BaseAPIResponse(boolean error, String message) {
+
+    public BaseAPIResponse(boolean error, String message, D data) {
         this.error = error;
         this.message = message;
+        this.data = data;
     }
 
     public boolean isError() {
@@ -28,5 +30,9 @@ public class BaseAPIResponse<D> {
 
     public String getMessage() {
         return message;
+    }
+
+    public D getData() {
+        return data;
     }
 }

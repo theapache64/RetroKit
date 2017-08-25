@@ -4,16 +4,18 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.theah64.retrokit.activities.BaseDynamicActivity;
+import com.theah64.retrokit.retro.BaseAPIResponse;
 import com.theah64.retrokit.retro.RetrofitClient;
 import com.theah64.retrokitexample.R;
 import com.theah64.retrokitexample.model.User;
+import com.theah64.retrokitexample.model.data.GetUserProfileData;
 import com.theah64.retrokitexample.rest.APIInterface;
 import com.theah64.retrokitexample.rest.responses.GetUserProfileResponse;
 
 import butterknife.BindView;
 import retrofit2.Call;
 
-public class UserProfileActivity extends BaseDynamicActivity<GetUserProfileResponse, APIInterface> {
+public class UserProfileActivity extends BaseDynamicActivity<BaseAPIResponse<GetUserProfileData>,APIInterface> {
 
     @BindView(R.id.tvUserId)
     TextView tvUserId;
@@ -34,8 +36,9 @@ public class UserProfileActivity extends BaseDynamicActivity<GetUserProfileRespo
     }
 
 
+
     @Override
-    public void onSuccess(GetUserProfileResponse response) {
+    public void onSuccess(BaseAPIResponse<GetUserProfileData> response) {
         final User user = response.getData().getUser();
         tvUserId.setText("#" + user.getId());
         tvUserName.setText(user.getName());
@@ -57,9 +60,8 @@ public class UserProfileActivity extends BaseDynamicActivity<GetUserProfileRespo
         return RetrofitClient.getClient().create(APIInterface.class);
     }
 
-
     @Override
-    protected Call<GetUserProfileResponse> getCall(APIInterface apiInterface) {
+    protected Call<GetUserProfileData> getCall(APIInterface apiInterface) {
         return apiInterface.getUserProfile();
     }
 

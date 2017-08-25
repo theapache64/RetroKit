@@ -15,7 +15,7 @@ import retrofit2.Response;
  * Created by theapache64 on 25/8/17.
  */
 
-public abstract class BaseDynamicActivity<R extends BaseAPIResponse<G>, A> extends BaseAppCompatActivity {
+public abstract class BaseDynamicActivity<R extends BaseAPIResponse<BaseAPIResponse>, A, D> extends BaseAppCompatActivity {
 
     public abstract void onSuccess(R response);
 
@@ -57,5 +57,5 @@ public abstract class BaseDynamicActivity<R extends BaseAPIResponse<G>, A> exten
 
     protected abstract A getAPIInterface();
 
-    protected abstract Call<R> getCall(A apiInterface);
+    protected abstract Call<D> getCall(A apiInterface);
 }
