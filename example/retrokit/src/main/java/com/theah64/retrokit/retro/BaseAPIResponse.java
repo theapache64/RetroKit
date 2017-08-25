@@ -1,4 +1,4 @@
-package com.theah64.retrokitexample.rest.responses;
+package com.theah64.retrokit.retro;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -13,6 +13,8 @@ public class BaseAPIResponse {
 
     @SerializedName("message")
     private final String message;
+
+
 
     public BaseAPIResponse(boolean error, String message) {
         this.error = error;

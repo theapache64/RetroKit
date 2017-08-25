@@ -1,7 +1,8 @@
 package com.theah64.retrokitexample.rest.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.theah64.retrokitexample.model.User;
+import com.theah64.retrokit.retro.BaseAPIResponse;
+import com.theah64.retrokitexample.model.data.GetUserProfileData;
 
 /**
  * Created by theapache64 on 25/8/17.
@@ -9,15 +10,15 @@ import com.theah64.retrokitexample.model.User;
 
 public class GetUserProfileResponse extends BaseAPIResponse {
 
-    @SerializedName("user")
-    private final User user;
+    @SerializedName("data")
+    private final GetUserProfileData data;
 
-    public GetUserProfileResponse(boolean error, String message, User user) {
+    public GetUserProfileResponse(boolean error, String message, GetUserProfileData data) {
         super(error, message);
-        this.user = user;
+        this.data = data;
     }
 
-    public User getUser() {
-        return user;
+    public GetUserProfileData getData() {
+        return data;
     }
 }

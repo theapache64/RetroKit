@@ -11,7 +11,7 @@ import retrofit2.http.GET;
 
 public interface APIInterface {
 
-    @GET("get_user_profile")
+    @GET("599ff1c62c0000dd0b51d600")
     Call<GetUserProfileResponse> getUserProfile();
 
 }

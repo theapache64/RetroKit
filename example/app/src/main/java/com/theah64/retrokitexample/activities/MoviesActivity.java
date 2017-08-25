@@ -3,6 +3,7 @@ package com.theah64.retrokitexample.activities;
 import android.os.Bundle;
 
 import com.theah64.retrokit.activities.BaseRecyclerViewActivity;
+import com.theah64.retrokit.retro.BaseAPIResponse;
 import com.theah64.retrokitexample.R;
 
 public class MoviesActivity extends BaseRecyclerViewActivity {
@@ -18,4 +19,5 @@ public class MoviesActivity extends BaseRecyclerViewActivity {
     protected int getRecyclerViewID() {
         return R.id.rvMovies;
     }
+
 }
