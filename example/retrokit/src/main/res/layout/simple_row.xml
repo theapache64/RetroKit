@@ -15,7 +15,6 @@
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ironman 3"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -23,7 +22,6 @@
             android:id="@+id/tvSubTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="It's a movie"
             android:textSize="15sp" />
 
 

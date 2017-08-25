@@ -15,15 +15,15 @@ import java.util.List;
 
 public class SimpleRecyclerViewAdapter extends BaseRecyclerViewAdapter<SimpleRecyclerViewAdapter.ViewHolder, SimpleModel> {
 
+
     public SimpleRecyclerViewAdapter(List<SimpleModel> data, @Nullable Callback<SimpleModel> callback) {
         super(data, callback);
     }
 
-
     @Override
     public void onBindViewHolder(ViewHolder holder, int position, SimpleModel item) {
         holder.tvTitle.setText(item.getTitle());
-        holder.tvTitle.setText(item.getSubtitle());
+        holder.tvSubTitle.setText(item.getSubtitle());
     }
 
     @Override
@@ -39,7 +39,7 @@ public class SimpleRecyclerViewAdapter extends BaseRecyclerViewAdapter<SimpleRec
     class ViewHolder extends BaseRecyclerViewHolder {
         final TextView tvTitle, tvSubTitle;
 
-        public ViewHolder(View row, BaseRecyclerViewAdapter adapter) {
+        ViewHolder(View row, BaseRecyclerViewAdapter adapter) {
             super(row, adapter);
             this.tvTitle = (TextView) row.findViewById(R.id.tvTitle);
             this.tvSubTitle = (TextView) row.findViewById(R.id.tvSubTitle);
