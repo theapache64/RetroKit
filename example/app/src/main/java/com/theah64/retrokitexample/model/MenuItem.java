@@ -11,7 +11,6 @@ public class MenuItem extends SimpleModel {
 
     private final Class<? extends BaseAppCompatActivity> classToLaunch;
 
-
     public MenuItem(String title, String subtitle, Class<? extends BaseAppCompatActivity> classToLaunch) {
         super(null, title, subtitle);
         this.classToLaunch = classToLaunch;

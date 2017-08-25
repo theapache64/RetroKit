@@ -12,7 +12,6 @@ public class MoviesActivity extends BaseRecyclerViewActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view_example);
         enableBackNavigationWithTitle("RecyclerView example");
-
     }
 
     @Override

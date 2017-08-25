@@ -57,4 +57,8 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
         }
     }
 
+
+    public String getLogTag() {
+        return this.getClass().getSimpleName();
+    }
 }

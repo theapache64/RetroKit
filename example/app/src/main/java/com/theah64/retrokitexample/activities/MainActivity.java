@@ -29,6 +29,7 @@ public class MainActivity extends BaseAppCompatActivity {
 
         //Adding menu items
         final List<SimpleModel> menuItems = new ArrayList<>();
+        menuItems.add(new MenuItem("Dynamic activity example", "User profile", UserProfileActivity.class));
         menuItems.add(new MenuItem("RecyclerView example", "Top rated movies", MoviesActivity.class));
 
         rvMenuItems.setLayoutManager(new LinearLayoutManager(this));
