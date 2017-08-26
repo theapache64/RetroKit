@@ -1,53 +1,78 @@
 package com.theah64.retrokitexample.activities;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.theah64.retrokit.activities.BaseRecyclerViewActivity;
+import com.theah64.retrokit.adapters.BaseRecyclerViewAdapter;
 import com.theah64.retrokit.retro.BaseAPIResponse;
 import com.theah64.retrokitexample.R;
+import com.theah64.retrokitexample.adapters.MoviesAdapter;
+import com.theah64.retrokitexample.model.Movie;
 import com.theah64.retrokitexample.model.data.GetMoviesData;
 import com.theah64.retrokitexample.rest.APIInterface;
+import com.theah64.retrokitexample.utils.App;
 
+import java.util.List;
+
+import butterknife.BindView;
 import retrofit2.Call;
 
-public class MoviesActivity extends BaseRecyclerViewActivity<GetMoviesData,APIInterface> {
+public class MoviesActivity extends BaseRecyclerViewActivity<Movie, GetMoviesData, APIInterface> implements BaseRecyclerViewAdapter.Callback<Movie> {
+
+
+    @BindView(R.id.rvMovies)
+    RecyclerView rvMovies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_view_example);
+        setContentViewWithButterKnife(R.layout.activity_recycler_view_example);
         enableBackNavigationWithTitle("RecyclerView example");
+        rvMovies.setLayoutManager(new LinearLayoutManager(this));
+
+        loadData();
     }
 
+
     @Override
-    protected int getRecyclerViewID() {
+    protected int getMainViewID() {
         return R.id.rvMovies;
     }
 
     @Override
-    protected void onSuccess(GetMoviesData body) {
-
-    }
-
-    @Override
-    protected int getMainViewID() {
-        return 0;
-    }
-
-    @Override
     protected String getLoadingMessage() {
-        return null;
+        return "Loading movies";
     }
 
     @Override
     protected APIInterface getAPIInterface() {
-        return null;
+        return App.getApiInterface();
     }
 
     @Override
     protected Call<BaseAPIResponse<GetMoviesData>> getCall(APIInterface apiInterface) {
-        return null;
+        return apiInterface.getMovies();
     }
 
+    @Override
+    public void onItemClick(Movie movie, int position) {
 
+    }
+
+    @Override
+    protected RecyclerView getRecyclerView() {
+        return rvMovies;
+    }
+
+    @Override
+    public List<Movie> getData(GetMoviesData data) {
+        return data.getMovies();
+    }
+
+    @Override
+    public BaseRecyclerViewAdapter getNewAdapter(List<Movie> data) {
+        return new MoviesAdapter(data, this);
+    }
 }

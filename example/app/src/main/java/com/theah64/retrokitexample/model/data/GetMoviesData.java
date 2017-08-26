@@ -10,6 +10,7 @@ import java.util.List;
  */
 
 public class GetMoviesData {
+
     @SerializedName("movies")
     private final List<Movie> movies;
 

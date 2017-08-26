@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/simple_selector"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="@dimen/default_row_padding">
 
         <TextView
             android:id="@+id/tvTitle"

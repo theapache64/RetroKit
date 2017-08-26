@@ -14,7 +14,7 @@ import retrofit2.Response;
  * Created by theapache64 on 25/8/17.
  */
 
-public abstract class BaseDynamicActivity<D, A> extends BaseAppCompatActivity {
+public abstract class BaseDynamicActivity<DATA, APIINTERFACE> extends BaseAppCompatActivity {
 
     public void loadData() {
 
@@ -26,9 +26,9 @@ public abstract class BaseDynamicActivity<D, A> extends BaseAppCompatActivity {
         });
         pm.showLoading(getLoadingMessage());
 
-        getCall(getAPIInterface()).enqueue(new Callback<BaseAPIResponse<D>>() {
+        getCall(getAPIInterface()).enqueue(new Callback<BaseAPIResponse<DATA>>() {
             @Override
-            public void onResponse(Call<BaseAPIResponse<D>> call, final Response<BaseAPIResponse<D>> response) {
+            public void onResponse(Call<BaseAPIResponse<DATA>> call, final Response<BaseAPIResponse<DATA>> response) {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -39,20 +39,20 @@ public abstract class BaseDynamicActivity<D, A> extends BaseAppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<BaseAPIResponse<D>> call, Throwable t) {
+            public void onFailure(Call<BaseAPIResponse<DATA>> call, Throwable t) {
                 t.printStackTrace();
                 pm.showError(ProgressManager.ERROR_TYPE_NETWORK_ERROR, R.string.network_error);
             }
         });
     }
 
-    protected abstract void onSuccess(D body);
+    protected abstract void onSuccess(DATA body);
 
     protected abstract int getMainViewID();
 
     protected abstract String getLoadingMessage();
 
-    protected abstract A getAPIInterface();
+    protected abstract APIINTERFACE getAPIInterface();
 
-    protected abstract Call<BaseAPIResponse<D>> getCall(A apiInterface);
+    protected abstract Call<BaseAPIResponse<DATA>> getCall(APIINTERFACE apiInterface);
 }
