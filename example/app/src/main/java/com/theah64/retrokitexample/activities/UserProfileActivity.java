@@ -62,6 +62,4 @@ public class UserProfileActivity extends BaseDynamicActivity<GetUserProfileData,
     protected Call<BaseAPIResponse<GetUserProfileData>> getCall(APIInterface apiInterface) {
         return apiInterface.getUserProfile();
     }
-
-
 }
