@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.theah64.retrokit.R;
@@ -21,7 +22,12 @@ import com.wang.avi.AVLoadingIndicatorView;
  */
 public class ProgressManager {
 
-    private final View progressLayout, mainView, tvErrorIcon;
+    public static final int ERROR_TYPE_NETWORK_ERROR = 844;
+    private static final int ERROR_TYPE_SERVER_ERROR = 532;
+    private static final int ERROR_TYPE_UNKNOWN_ERROR = 202;
+
+    private final View progressLayout, mainView;
+    private final ImageView ivErrorIcon;
     private AVLoadingIndicatorView pbLoading;
     private final Button bRetry;
     private final TextView tvMessage;
@@ -50,7 +56,7 @@ public class ProgressManager {
         progressLayout = LayoutInflater.from(activity).inflate(R.layout.progress_layout, rootLayout, false);
         ((ViewGroup) mainView.getParent()).addView(progressLayout);
 
-        tvErrorIcon = progressLayout.findViewById(R.id.ivErrorIcon);
+        ivErrorIcon = (ImageView) progressLayout.findViewById(R.id.ivErrorIcon);
         pbLoading = (AVLoadingIndicatorView) progressLayout.findViewById(R.id.pbLoading);
 
         final RetroKit retroKit = RetroKit.getInstance();
@@ -75,20 +81,34 @@ public class ProgressManager {
         isShowingError = false;
     }
 
-    public void showError(String message) {
+    public void showError(final int type, String message) {
         isLoading = false;
         isShowingError = true;
         pbLoading.hide();
         mainView.setVisibility(View.INVISIBLE);
         progressLayout.setVisibility(View.VISIBLE);
-        tvErrorIcon.setVisibility(View.VISIBLE);
+        ivErrorIcon.setVisibility(View.VISIBLE);
+        ivErrorIcon.setImageResource(getErrorImage(type));
         tvMessage.setVisibility(View.VISIBLE);
         tvMessage.setText(message);
         bRetry.setVisibility(View.VISIBLE);
     }
 
-    public void showError(int message) {
-        showError(context.getString(message));
+    private static int getErrorImage(int type) {
+        switch (type) {
+            case ERROR_TYPE_NETWORK_ERROR:
+                return R.drawable.ic_unknown_error; //TODO: Need to find new icon
+            case ERROR_TYPE_SERVER_ERROR:
+                return R.drawable.ic_unknown_error;//TODO: Need to find new icon
+            case ERROR_TYPE_UNKNOWN_ERROR:
+                return R.drawable.ic_unknown_error;
+            default:
+                throw new IllegalArgumentException("No image set for error type " + type);
+        }
+    }
+
+    public void showError(int type, int message) {
+        showError(type, context.getString(message));
     }
 
     public void showLoading(final String message) {
@@ -97,7 +117,7 @@ public class ProgressManager {
         pbLoading.show();
         mainView.setVisibility(View.INVISIBLE);
         progressLayout.setVisibility(View.VISIBLE);
-        tvErrorIcon.setVisibility(View.GONE);
+        ivErrorIcon.setVisibility(View.GONE);
         tvMessage.setVisibility(View.VISIBLE);
         tvMessage.setText(message == null ? "" : message);
         bRetry.setVisibility(View.GONE);

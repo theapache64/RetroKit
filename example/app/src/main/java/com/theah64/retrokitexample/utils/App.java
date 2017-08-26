@@ -13,7 +13,7 @@ import com.wang.avi.indicators.BallPulseSyncIndicator;
 
 public class App extends Application {
 
-    private static final String BASE_URL = "http://www.moc1ky.io/v2/";
+    private static final String BASE_URL = "http://www.moc2ky.io/v2/";
 
     @Override
     public void onCreate() {

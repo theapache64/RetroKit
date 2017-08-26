@@ -2,6 +2,7 @@ package com.theah64.retrokit.activities;
 
 import android.os.Handler;
 
+import com.theah64.retrokit.R;
 import com.theah64.retrokit.retro.BaseAPIResponse;
 import com.theah64.retrokit.utils.ProgressManager;
 
@@ -39,7 +40,8 @@ public abstract class BaseDynamicActivity<D, A> extends BaseAppCompatActivity {
 
             @Override
             public void onFailure(Call<BaseAPIResponse<D>> call, Throwable t) {
-                pm.showError(t.getMessage());
+                t.printStackTrace();
+                pm.showError(ProgressManager.ERROR_TYPE_NETWORK_ERROR, R.string.network_error);
             }
         });
     }
