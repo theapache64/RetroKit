@@ -1,6 +1,6 @@
 package com.theah64.retrokit.activities;
 
-import android.os.Handler;
+import android.support.annotation.NonNull;
 
 import com.theah64.retrokit.R;
 import com.theah64.retrokit.retro.BaseAPIResponse;
@@ -28,25 +28,26 @@ public abstract class BaseDynamicActivity<DATA, APIINTERFACE> extends BaseAppCom
 
         getCall(getAPIInterface()).enqueue(new Callback<BaseAPIResponse<DATA>>() {
             @Override
-            public void onResponse(Call<BaseAPIResponse<DATA>> call, final Response<BaseAPIResponse<DATA>> response) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        onSuccess(response.body().getData());
-                        pm.showMainView();
-                    }
-                }, 1500);
+            public void onResponse(@NonNull Call<BaseAPIResponse<DATA>> call, @NonNull final Response<BaseAPIResponse<DATA>> response) {
+                if (response.body() != null) {
+                    onSuccess(response.body());
+                    pm.showMainView();
+                } else {
+                    pm.showError(ProgressManager.ERROR_TYPE_SERVER_ERROR, R.string.server_error);
+                }
+
+
             }
 
             @Override
-            public void onFailure(Call<BaseAPIResponse<DATA>> call, Throwable t) {
+            public void onFailure(@NonNull Call<BaseAPIResponse<DATA>> call, Throwable t) {
                 t.printStackTrace();
                 pm.showError(ProgressManager.ERROR_TYPE_NETWORK_ERROR, R.string.network_error);
             }
         });
     }
 
-    protected abstract void onSuccess(DATA body);
+    protected abstract void onSuccess(BaseAPIResponse<DATA> body);
 
     protected abstract int getMainViewID();
 

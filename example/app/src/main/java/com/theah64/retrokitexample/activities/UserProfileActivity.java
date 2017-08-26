@@ -36,8 +36,8 @@ public class UserProfileActivity extends BaseDynamicActivity<GetUserProfileData,
 
 
     @Override
-    protected void onSuccess(GetUserProfileData body) {
-        final User user = body.getUser();
+    protected void onSuccess(BaseAPIResponse<GetUserProfileData> body) {
+        final User user = body.getData().getUser();
         tvUserId.setText("#" + user.getId());
         tvUserName.setText(user.getName());
         tvEmail.setText(user.getEmail());

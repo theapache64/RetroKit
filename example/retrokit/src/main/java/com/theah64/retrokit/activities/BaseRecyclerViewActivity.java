@@ -3,6 +3,7 @@ package com.theah64.retrokit.activities;
 import android.support.v7.widget.RecyclerView;
 
 import com.theah64.retrokit.adapters.BaseRecyclerViewAdapter;
+import com.theah64.retrokit.retro.BaseAPIResponse;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ public abstract class BaseRecyclerViewActivity<M, D, A> extends BaseDynamicActiv
     protected abstract RecyclerView getRecyclerView();
 
     @Override
-    protected void onSuccess(D body) {
-        getRecyclerView().setAdapter(getNewAdapter(getData(body)));
+    protected void onSuccess(BaseAPIResponse<D> body) {
+        getRecyclerView().setAdapter(getNewAdapter(getData(body.getData())));
     }
 
     public abstract List<M> getData(D data);

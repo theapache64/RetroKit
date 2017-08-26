@@ -23,7 +23,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 public class ProgressManager {
 
     public static final int ERROR_TYPE_NETWORK_ERROR = 844;
-    private static final int ERROR_TYPE_SERVER_ERROR = 532;
+    public static final int ERROR_TYPE_SERVER_ERROR = 532;
     private static final int ERROR_TYPE_UNKNOWN_ERROR = 202;
 
     private final View progressLayout, mainView;
