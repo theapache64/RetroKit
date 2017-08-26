@@ -3,13 +3,9 @@ package com.theah64.retrokitexample.activities;
 import android.os.Bundle;
 
 import com.theah64.retrokit.activities.BaseRecyclerViewActivity;
-import com.theah64.retrokit.retro.BaseAPIResponse;
 import com.theah64.retrokitexample.R;
-import com.theah64.retrokitexample.rest.APIInterface;
 
-import retrofit2.Call;
-
-public class MoviesActivity extends BaseRecyclerViewActivity<APIInterface> {
+public class MoviesActivity extends BaseRecyclerViewActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +29,4 @@ public class MoviesActivity extends BaseRecyclerViewActivity<APIInterface> {
         return null;
     }
 
-    @Override
-    protected APIInterface getAPIInterface() {
-        return null;
-    }
-
-    @Override
-    protected Call<BaseAPIResponse<G>> getCall(APIInterface apiInterface) {
-        return null;
-    }
 }

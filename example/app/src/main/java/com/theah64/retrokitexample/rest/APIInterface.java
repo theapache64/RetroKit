@@ -1,6 +1,7 @@
 package com.theah64.retrokitexample.rest;
 
-import com.theah64.retrokitexample.rest.responses.GetUserProfileResponse;
+
+import com.theah64.retrokitexample.rest.response.GetUserProfileResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

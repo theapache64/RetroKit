@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by theapache64 on 25/8/17.
  */
 
-public class BaseAPIResponse<D> {
+public class BaseAPIResponse {
 
     @SerializedName("error")
     private final boolean error;
@@ -14,14 +14,10 @@ public class BaseAPIResponse<D> {
     @SerializedName("message")
     private final String message;
 
-    @SerializedName("data")
-    private final D data;
 
-
-    public BaseAPIResponse(boolean error, String message, D data) {
+    public BaseAPIResponse(boolean error, String message) {
         this.error = error;
         this.message = message;
-        this.data = data;
     }
 
     public boolean isError() {
@@ -30,9 +26,5 @@ public class BaseAPIResponse<D> {
 
     public String getMessage() {
         return message;
-    }
-
-    public D getData() {
-        return data;
     }
 }
