@@ -1,7 +1,8 @@
 package com.theah64.retrokitexample.rest;
 
 
-import com.theah64.retrokitexample.rest.response.GetUserProfileResponse;
+import com.theah64.retrokit.retro.BaseAPIResponse;
+import com.theah64.retrokitexample.model.data.GetUserProfileData;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,7 +14,7 @@ import retrofit2.http.GET;
 public interface APIInterface {
 
     @GET("599ff1c62c0000dd0b51d600")
-    Call<GetUserProfileResponse> getUserProfile();
+    Call<BaseAPIResponse<GetUserProfileData>> getUserProfile();
 
     //@GET("59a02a742c0000220f51d6cd")
 
