@@ -13,9 +13,11 @@ An android project kit integrated mainly with Retrofit and other popular utility
 ### How to integrate this library ?
 
 **Step one - Add to build.gradle**
+
 `compile 'com.theah64.retrokit:retrokit:1.0.1'`
 
 **Step two - Initialize RetroKit in application instance**
+
 ```
 public class App extends Application {
     private static final String BASE_URL = "http://www.mocky.io/v2/";
