@@ -11,17 +11,17 @@ import java.util.List;
  * Created by theapache64 on 24/8/17.
  */
 
-public abstract class BaseRecyclerViewActivity<M, D, A> extends BaseDynamicActivity<D, A> {
+public abstract class BaseRecyclerViewActivity<MODEL, RESPONSE_DATA, APIINTERFACE> extends BaseDynamicActivity<RESPONSE_DATA, APIINTERFACE> {
 
     protected abstract RecyclerView getRecyclerView();
 
     @Override
-    protected void onSuccess(BaseAPIResponse<D> body) {
+    protected void onSuccess(BaseAPIResponse<RESPONSE_DATA> body) {
         getRecyclerView().setAdapter(getNewAdapter(getData(body.getData())));
     }
 
-    public abstract List<M> getData(D data);
+    public abstract List<MODEL> getData(RESPONSE_DATA data);
 
-    public abstract BaseRecyclerViewAdapter getNewAdapter(List<M> data);
+    public abstract BaseRecyclerViewAdapter getNewAdapter(List<MODEL> data);
 
 }

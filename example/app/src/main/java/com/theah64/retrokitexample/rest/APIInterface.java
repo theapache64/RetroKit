@@ -14,9 +14,9 @@ import retrofit2.http.GET;
 
 public interface APIInterface {
 
-    @GET("599ff1c62c0000dd0b51d600")
+    @GET("get_user_profile")
     Call<BaseAPIResponse<GetUserProfileData>> getUserProfile();
 
-    @GET("59a02a742c0000220f51d6cd")
+    @GET("get_movies")
     Call<BaseAPIResponse<GetMoviesData>> getMovies();
 }

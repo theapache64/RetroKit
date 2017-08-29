@@ -15,7 +15,7 @@ import com.wang.avi.indicators.BallPulseSyncIndicator;
 
 public class App extends Application {
 
-    private static final String BASE_URL = "http://www.mocky.io/v2/";
+    private static final String BASE_URL = "http://18.220.163.253:8080/mock_api/get_json/retrokit/";
 
     public static APIInterface getApiInterface() {
         return RetrofitClient.getClient().create(APIInterface.class);
@@ -29,6 +29,7 @@ public class App extends Application {
                 .setRetrofitBaseURL(BASE_URL)
                 .setIconModule(new FontAwesomeModule())
                 .setDefaultFontPathAsRobotoRegular()
+                .setDebug(true)
                 .setDefaultProgressIndicator(new BallPulseSyncIndicator())
                 .setDefaultProgressIndicatorColor(R.color.colorPrimary);
     }

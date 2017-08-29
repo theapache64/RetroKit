@@ -14,7 +14,7 @@ import retrofit2.Response;
  * Created by theapache64 on 25/8/17.
  */
 
-public abstract class BaseDynamicActivity<DATA, APIINTERFACE> extends BaseAppCompatActivity {
+public abstract class BaseDynamicActivity<DATA, APIINTERFACE> extends BaseRefreshableActivity {
 
     public void loadData() {
 
@@ -24,6 +24,7 @@ public abstract class BaseDynamicActivity<DATA, APIINTERFACE> extends BaseAppCom
                 loadData();
             }
         });
+
         pm.showLoading(getLoadingMessage());
 
         getCall(getAPIInterface()).enqueue(new Callback<BaseAPIResponse<DATA>>() {

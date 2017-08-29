@@ -15,18 +15,34 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 public class RetroKit {
 
     private static final RetroKit instance = new RetroKit();
+
     private static final String FONT_ROBOTO_REGULAR = "fonts/Roboto-Regular.ttf";
     private static final String FONT_ROBOTO_BOLD = "fonts/Roboto-Bold.ttf";
     private static final String FONT_ROBOTO_MEDIUM = "fonts/Roboto-Medium.ttf";
     public static final String FONT_PACIFICO = "fonts/Pacifico.ttf";
-    private Indicator defaultProgressIndicator = new BallPulseSyncIndicator();
-    private int defaultProgressIndicatorColor = R.color.primary;
+
+    private Indicator defaultProgressIndicator;
+    private int defaultProgressIndicatorColor;
+    private boolean isDebug;
 
     public static RetroKit getInstance() {
         return instance;
     }
 
+    private RetroKit() {
+        this.defaultProgressIndicator = new BallPulseSyncIndicator();
+        this.defaultProgressIndicatorColor = android.support.design.R.attr.colorPrimary;
+        this.isDebug = false;
+    }
 
+    public boolean isDebug() {
+        return isDebug;
+    }
+
+    public RetroKit setDebug(boolean debug) {
+        isDebug = debug;
+        return this;
+    }
 
     public RetroKit setRetrofitBaseURL(String baseUrl) {
         RetrofitClient.setBaseUrl(baseUrl);
