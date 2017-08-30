@@ -112,6 +112,7 @@ public class ProgressManager {
     }
 
     public void showLoading(final String message) {
+        System.out.println("Show loading : " + message);
         isLoading = true;
         isShowingError = false;
         pbLoading.show();

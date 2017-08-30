@@ -7,15 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 import java.util.List;
 
 /**
  * Created by shifar on 15/9/16.
  */
-    public abstract class BaseRecyclerViewAdapter<V extends BaseRecyclerViewHolder, M> extends RecyclerView.Adapter<V> {
+public abstract class BaseRecyclerViewAdapter<V extends BaseRecyclerViewHolder, M> extends RecyclerView.Adapter<V> {
 
 
-    protected final Callback<M> callback;
+    private static final long DEFAULT_ANIMATION_DURATION = 1000;
+    private final Callback<M> callback;
     private List<M> data;
     private LayoutInflater inflater;
 
@@ -53,18 +57,36 @@ import java.util.List;
 
     @Override
     public V onCreateViewHolder(ViewGroup parent, int viewType) {
+
         if (inflater == null) {
             inflater = LayoutInflater.from(parent.getContext());
         }
 
         final View row = inflater.inflate(getRowLayoutID(), parent, false);
+        startAnimation(row);
+
         return getNewRow(row);
     }
+
+    private void startAnimation(View row) {
+        YoYo.with(getAnimation())
+                .duration(getAnimationDuration())
+                .playOn(row);
+    }
+
 
     @LayoutRes
     protected abstract int getRowLayoutID();
 
     protected abstract V getNewRow(View row);
+
+    private Techniques getAnimation() {
+        return Techniques.BounceInUp;
+    }
+
+    private long getAnimationDuration() {
+        return DEFAULT_ANIMATION_DURATION;
+    }
 
     public interface Callback<M> {
         void onItemClick(M m, int position);

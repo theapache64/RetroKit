@@ -31,7 +31,7 @@ public class UserProfileActivity extends BaseDynamicActivity<GetUserProfileData,
         setContentViewWithButterKnife(R.layout.activity_user_profile);
         enableBackNavigationWithTitle("Profile");
 
-        loadData();
+        setup();
     }
 
 
@@ -46,6 +46,16 @@ public class UserProfileActivity extends BaseDynamicActivity<GetUserProfileData,
     @Override
     protected int getMainViewID() {
         return R.id.llMain;
+    }
+
+    @Override
+    protected String getActionBarSubTitle() {
+        return null;
+    }
+
+    @Override
+    protected String getActionBarTitle() {
+        return null;
     }
 
     @Override

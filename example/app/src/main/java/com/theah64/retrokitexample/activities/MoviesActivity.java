@@ -32,13 +32,23 @@ public class MoviesActivity extends BaseRecyclerViewActivity<Movie, GetMoviesDat
         enableBackNavigationWithTitle("RecyclerView example");
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
 
-        loadData();
+        setup();
     }
 
 
     @Override
     protected int getMainViewID() {
         return R.id.rvMovies;
+    }
+
+    @Override
+    protected String getActionBarSubTitle() {
+        return null;
+    }
+
+    @Override
+    protected String getActionBarTitle() {
+        return null;
     }
 
     @Override
