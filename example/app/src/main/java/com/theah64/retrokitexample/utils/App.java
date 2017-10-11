@@ -25,9 +25,9 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        RetroKit.getInstance()
+        RetroKit.init(this)
                 .setRetrofitBaseURL(BASE_URL)
-                .setIconModule(new FontAwesomeModule())
+                .addIconModule(new FontAwesomeModule())
                 .setDefaultFontPathAsRobotoRegular()
                 .setDebug(true)
                 .setDefaultProgressIndicator(new BallPulseSyncIndicator())
