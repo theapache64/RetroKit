@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="header_label">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/foldable_label_bg</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_centerVertical">true
+        </item>
+        <item name="android:textColor">?android:attr/colorPrimary</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="fold_toggle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:gravity">center_vertical|end</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:textColor">?android:attr/colorPrimary</item>
+        <item name="android:textOff">@string/fa_angle_right_iconify</item>
+        <item name="android:textOn">@string/fa_angle_down_iconify</item>
+    </style>
+
+
+</resources>

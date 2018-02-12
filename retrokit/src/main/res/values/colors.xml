@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="selected_text_color">#ffffff</color>
+    <color name="selected_background_color">@color/grey_400</color>
+
+
+    <color name="unselected_text_color">@color/grey_600</color>
+    <color name="unselected_background_color">@color/grey_200</color>
+
+    <color name="shadow_background_color">@color/grey_300</color>
+    <color name="unselected_header_background_color">@color/grey_200</color>
+
+
+    <color name="separator_color">@color/grey_500</color>
+
+    <color name="popup_menu_item_text_color">#88a5c9</color>
+</resources>

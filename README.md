@@ -2,19 +2,21 @@
 An android project kit integrated mainly with Retrofit and other popular utility libraries.
 
 ### Libraries integrated
-* [Retrofit v2.3.0](https://github.com/square/retrofit)
-* [gson v2.7](https://github.com/google/gson)
-* [ButterKnife v8.8.1](https://github.com/JakeWharton/butterknife)
-* [Iconify (fa-module v2.2.1)](https://github.com/JoanZapata/android-iconify)
-* [AVLoadingIndicatorView v2.1.3](https://github.com/81813780/AVLoadingIndicatorView)
-* [Calligraphy v2.3.0](https://github.com/chrisjenx/Calligraphy)
+* [Retrofit](https://github.com/square/retrofit)
+* [gson](https://github.com/google/gson)
+* [ButterKnife](https://github.com/JakeWharton/butterknife)
+* [Iconify (fa-module)](https://github.com/JoanZapata/android-iconify)
+* [AVLoadingIndicatorView](https://github.com/81813780/AVLoadingIndicatorView)
+* [Calligraphy](https://github.com/chrisjenx/Calligraphy)
 * and also material colors xml
 
 ### How to integrate this library ?
 
 **Step one - Add to build.gradle**
 
-`compile 'com.theah64.retrokit:retrokit:1.0.1'`
+```groovy
+compile 'com.theah64.retrokit:retrokit:2.0.0'
+```
 
 **Step two - Initialize RetroKit in application instance**
 
