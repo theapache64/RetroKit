@@ -109,8 +109,6 @@ public class CustomEditText extends AppCompatAutoCompleteTextView {
             }
 
         } else {
-            //Data is empty
-
             setError(getContext().getString(R.string.Empty));
             return false;
         }
