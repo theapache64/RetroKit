@@ -70,7 +70,7 @@ dependencies {
     compile 'com.daimajia.easing:library:2.0@aar'
     compile 'com.daimajia.androidanimations:library:2.3@aar'
     compile 'com.jakewharton:butterknife:8.8.1'
-    compile 'com.theah64.bugmailer:bugmailer:1.1.8'
+    compile 'com.theah64.bugmailer:bugmailer:1.1.9'
     compile 'com.afollestad.material-dialogs:commons:0.9.6.0'
 
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'

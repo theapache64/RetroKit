@@ -1,5 +1,7 @@
 package com.theah64.retrokit.retro;
 
+import com.theah64.retrokit.utils.RetroKitNetworkInterceptor;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -36,10 +38,14 @@ public class RetrofitClient {
 
                 System.out.println("Enabled network logging");
 
+                //Http logger
                 HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
                 logging.setLevel(HttpLoggingInterceptor.Level.BODY);
                 OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
                 httpClient.addInterceptor(logging);
+
+                //curl logger
+                httpClient.addInterceptor(new RetroKitNetworkInterceptor());
 
                 retrofitBuilder.client(httpClient.build());
             }

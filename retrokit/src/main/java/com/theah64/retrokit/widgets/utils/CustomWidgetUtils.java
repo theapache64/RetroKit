@@ -44,7 +44,9 @@ public class CustomWidgetUtils {
             if (!v.isInEditMode()) {
 
                 String iconLeft = ta.getString(iconLeftRes);
-                this.isRequired = ta.getBoolean(isRequiredRes, false);
+                if (isRequiredRes != -1) {
+                    this.isRequired = ta.getBoolean(isRequiredRes, false);
+                }
 
                 int iconLeftColor = -1;
                 int iconLeftSize = -1;

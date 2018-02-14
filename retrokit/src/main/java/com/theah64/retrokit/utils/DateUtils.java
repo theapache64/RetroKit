@@ -1,11 +1,11 @@
 package com.theah64.retrokit.utils;
 
+import com.theah64.retrokit.retro.RetroKit;
+
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -44,11 +44,10 @@ public class DateUtils {
         return calendar.getTime();
     }
 
-    private static final SimpleDateFormat ddMMyyyy = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
-    public static Date parseWithddMMyyyy(final String date) {
+    public static Date parseWithDefaultDateFormat(final String date) {
         try {
-            return ddMMyyyy.parse(date);
+            return RetroKit.getDefaultDateFormat().parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
             throw new IllegalArgumentException(e.getMessage());
@@ -56,7 +55,7 @@ public class DateUtils {
     }
 
     public static String formatWithddMMyyyy(final Date date) {
-        return ddMMyyyy.format(date);
+        return RetroKit.getDefaultDateFormat().format(date);
     }
 
     public static Calendar[] toCalendarArray(List<String> dates) {
@@ -67,7 +66,7 @@ public class DateUtils {
 
         for (int i = 0; i < totalBusyDays; i++) {
             final String busyDateString = dates.get(i);
-            final Date date = DateUtils.parseWithddMMyyyy(busyDateString);
+            final Date date = DateUtils.parseWithDefaultDateFormat(busyDateString);
             final Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             calendars[i] = calendar;

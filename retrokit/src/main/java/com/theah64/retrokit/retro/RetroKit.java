@@ -21,6 +21,9 @@ import com.theah64.retrokit.utils.PreferenceUtils;
 import com.wang.avi.Indicator;
 import com.wang.avi.indicators.BallPulseSyncIndicator;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
@@ -36,6 +39,9 @@ public class RetroKit {
     private static final String FONT_ROBOTO_BOLD = "fonts/Roboto-Bold.ttf";
     public static final String FONT_ROBOTO_MEDIUM = "fonts/Roboto-Medium.ttf";
     public static final String FONT_PACIFICO = "fonts/Pacifico.ttf";
+
+    private static SimpleDateFormat ddMMyyyy = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+    private static SimpleDateFormat defaultDateFormat = ddMMyyyy;
     private final Context context;
     private final Class<?> apiInterface;
 
@@ -69,6 +75,12 @@ public class RetroKit {
 
         PreferenceUtils.init(context);
     }
+
+
+    public static SimpleDateFormat getDefaultDateFormat() {
+        return defaultDateFormat;
+    }
+
 
     public int getColorPrimary() {
         return colorPrimary;
@@ -191,6 +203,18 @@ public class RetroKit {
         }
         return this;
     }
+
+    public RetroKit setDefaultDateFormat(SimpleDateFormat defaultDateFormat) {
+        RetroKit.defaultDateFormat = defaultDateFormat;
+        return this;
+    }
+
+
+    public RetroKit setDefaultDateFormat(String format) {
+        RetroKit.defaultDateFormat = new SimpleDateFormat(format, Locale.getDefault());
+        return this;
+    }
+
 
     public RetroKit setCustomErrorHandler(String errorMessage, OnErrorTrueCallback errorCallback) {
         this.errorMessage = errorMessage;
