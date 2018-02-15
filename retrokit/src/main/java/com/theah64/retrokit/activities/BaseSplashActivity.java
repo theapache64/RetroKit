@@ -54,6 +54,10 @@ public abstract class BaseSplashActivity extends BaseAppCompatActivity {
 
         ((ImageView) findViewById(R.id.ivBg)).setVisibility(isWhitePatternBg() ? View.VISIBLE : View.GONE);
 
+        startSplashEngine();
+    }
+
+    protected void startSplashEngine() {
         onSplashStart();
         new Handler().postDelayed(new Runnable() {
             @Override

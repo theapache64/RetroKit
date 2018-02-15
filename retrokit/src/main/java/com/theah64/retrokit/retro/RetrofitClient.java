@@ -24,7 +24,7 @@ public class RetrofitClient {
     public static Retrofit getClient() {
 
         if (baseUrl == null) {
-            throw new IllegalArgumentException("Call RetroKit.init() from your Application class");
+            throw new IllegalArgumentException("Base API URL is not set");
         }
 
         if (retrofit == null) {

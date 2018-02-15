@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.util.AttributeSet;
+import android.widget.Toast;
 
 import com.joanzapata.iconify.IconDrawable;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
@@ -130,9 +131,11 @@ public class CustomEditText extends AppCompatAutoCompleteTextView {
      */
     public static final class EditTextValidator {
 
+        private final Context context;
         private final CustomEditText[] customEditTexts;
 
-        public EditTextValidator(CustomEditText... customEditTexts) {
+        public EditTextValidator(Context context, CustomEditText... customEditTexts) {
+            this.context = context;
             this.customEditTexts = customEditTexts;
         }
 
@@ -142,6 +145,11 @@ public class CustomEditText extends AppCompatAutoCompleteTextView {
             for (final CustomEditText customEditText : customEditTexts) {
                 isAllValid = customEditText.isMatch() && isAllValid;
             }
+
+            if (!isAllValid) {
+                Toast.makeText(context, R.string.Oops_validation_errors, Toast.LENGTH_SHORT).show();
+            }
+
             return isAllValid;
         }
 

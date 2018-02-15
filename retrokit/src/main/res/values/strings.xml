@@ -31,7 +31,7 @@
     <string name="sort_ascending">Sort Ascending</string>
     <string name="sort_descending">Sort Descending</string>
     <string name="clear_sorting">Clear</string>
-
+    <string name="Oops_validation_errors">Oops, Validation errors!</string>
 
 
 </resources>
