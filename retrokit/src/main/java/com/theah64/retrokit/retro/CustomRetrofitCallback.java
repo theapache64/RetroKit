@@ -64,11 +64,11 @@ public abstract class CustomRetrofitCallback<T extends BaseAPIResponse<D>, D> im
             Log.e(X, errorMessage);
             onFailure(errorMessage);
         } else {
-            onSuccess(resp.getData());
+            onSuccess(resp.getMessage(), resp.getData());
         }
     }
 
-    protected abstract void onSuccess(D data);
+    protected abstract void onSuccess(String message, D data);
 
 
     protected void onFailure(String message) {

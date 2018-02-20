@@ -86,7 +86,7 @@ public abstract class BaseRefreshableActivity<DATA> extends BaseProgressManActiv
     }
 
     @Override
-    protected ProgressManager.Callback getProgressManCallback() {
+    public ProgressManager.Callback getProgressManCallback() {
         return new ProgressManager.Callback() {
             @Override
             public void onRetryButtonClicked() {

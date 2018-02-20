@@ -87,7 +87,7 @@ public abstract class BaseRefreshableFragment<DATA> extends BaseProgressManFragm
     }
 
     @Override
-    protected ProgressManager.Callback getProgressManCallback() {
+    public ProgressManager.Callback getProgressManCallback() {
         return new ProgressManager.Callback() {
             @Override
             public void onRetryButtonClicked() {

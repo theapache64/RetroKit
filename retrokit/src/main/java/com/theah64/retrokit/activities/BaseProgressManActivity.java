@@ -14,11 +14,11 @@ public abstract class BaseProgressManActivity extends BaseAppCompatActivity {
         return progressMan;
     }
 
-    protected abstract int getMainViewID();
+    public abstract int getMainViewID();
 
     public void setProgressMan(ProgressManager progressMan) {
         this.progressMan = progressMan;
     }
 
-    protected abstract ProgressManager.Callback getProgressManCallback();
+    public abstract ProgressManager.Callback getProgressManCallback();
 }

@@ -1,6 +1,5 @@
 package com.theah64.retrokit.utils;
 
-;
 import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -13,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.theah64.retrokit.R;
+import com.theah64.retrokit.activities.BaseProgressManActivity;
 import com.theah64.retrokit.retro.RetroKit;
 import com.wang.avi.AVLoadingIndicatorView;
+
+;
 
 
 /**
@@ -41,6 +43,10 @@ public class ProgressManager {
 
     public ProgressManager(AppCompatActivity activity, final int mainViewId, @Nullable final Callback callback) {
         this(activity, (ViewGroup) activity.getWindow().getDecorView().getRootView(), mainViewId, callback, null);
+    }
+
+    public ProgressManager(BaseProgressManActivity activity) {
+        this(activity, (ViewGroup) activity.getWindow().getDecorView().getRootView(), activity.getMainViewID(), activity.getProgressManCallback(), null);
     }
 
     public View getMainView() {

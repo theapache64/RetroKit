@@ -227,4 +227,8 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     public static void start(Context context, Class<? extends BaseAppCompatActivity> actToLaunch) {
         context.startActivity(new Intent(context, actToLaunch));
     }
+
+    public void onBackPressed(View v) {
+        onBackPressed();
+    }
 }
