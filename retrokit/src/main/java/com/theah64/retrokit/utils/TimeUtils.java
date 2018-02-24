@@ -1,5 +1,7 @@
 package com.theah64.retrokit.utils;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by theapache64 on 18/9/17.
  */
@@ -12,4 +14,5 @@ public class TimeUtils {
         float percFinished = (float) timeSpent / totalDuration * 100;
         return (int) percFinished;
     }
+
 }
