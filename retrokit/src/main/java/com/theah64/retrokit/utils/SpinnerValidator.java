@@ -34,7 +34,7 @@ public class SpinnerValidator {
         }
 
         if (!isAllValid) {
-            Toast.makeText(context, R.string.Validation_error_occurred, Toast.LENGTH_SHORT).show();
+            SingletonToast.makeText(context, R.string.Validation_error_occurred, Toast.LENGTH_SHORT).show();
         }
 
         return isAllValid;

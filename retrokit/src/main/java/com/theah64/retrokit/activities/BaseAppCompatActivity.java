@@ -20,6 +20,7 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.theah64.retrokit.R;
 import com.theah64.retrokit.utils.DialogUtils;
 import com.theah64.retrokit.utils.PreferenceUtils;
+import com.theah64.retrokit.utils.SingletonToast;
 import com.theah64.retrokit.widgets.CustomSpinner;
 import com.theah64.retrokit.widgets.ValidTextInputLayout;
 
@@ -141,11 +142,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     }
 
     public void toast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        SingletonToast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     public void toast(@StringRes int message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        SingletonToast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     protected void savePref(String key, String value) {

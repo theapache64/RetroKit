@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.evrencoskun.tableview.TableView;
 import com.theah64.retrokit.R;
+import com.theah64.retrokit.utils.SingletonToast;
 import com.theah64.retrokit.utils.tableview.BaseTableAdapter;
 import com.theah64.retrokit.utils.tableview.MyTableViewListener;
 import com.theah64.retrokit.utils.tableview.model.CellModel;
@@ -60,7 +61,7 @@ public abstract class BaseDynamicTableActivity<DATA, MODEL, APIINTERFACE> extend
         }
 
         if (rows.isEmpty()) {
-            Toast.makeText(this, R.string.No_data_found, Toast.LENGTH_SHORT).show();
+            SingletonToast.makeText(this, R.string.No_data_found, Toast.LENGTH_SHORT).show();
         }
 
         adapter.setAllItems(getHeaderModels(getHeaders()), rowHeader, rows);

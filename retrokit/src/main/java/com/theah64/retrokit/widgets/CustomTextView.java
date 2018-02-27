@@ -3,7 +3,11 @@ package com.theah64.retrokit.widgets;
 import android.content.Context;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.theah64.retrokit.R;
 import com.theah64.retrokit.widgets.utils.CustomWidgetUtils;
 
@@ -41,4 +45,9 @@ public class CustomTextView extends AppCompatTextView {
     }
 
 
+    public static void setTextAdvanced(TextView textView, String data) {
+        textView.setVisibility(View.VISIBLE);
+        textView.setText(data);
+        YoYo.with(Techniques.Tada).duration(300).playOn(textView);
+    }
 }

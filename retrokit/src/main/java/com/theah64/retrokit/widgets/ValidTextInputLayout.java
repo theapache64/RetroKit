@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.theah64.retrokit.R;
+import com.theah64.retrokit.utils.SingletonToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -203,7 +204,7 @@ public final class ValidTextInputLayout<M> extends TextInputLayout {
             }
 
             if (!isAllValid) {
-                Toast.makeText(context, R.string.Validation_error_occurred, Toast.LENGTH_SHORT).show();
+                SingletonToast.makeText(context, R.string.Validation_error_occurred, Toast.LENGTH_SHORT).show();
             }
 
             return isAllValid;

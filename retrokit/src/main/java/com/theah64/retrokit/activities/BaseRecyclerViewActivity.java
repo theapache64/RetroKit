@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.theah64.retrokit.R;
 import com.theah64.retrokit.adapters.BaseRecyclerViewAdapter;
 import com.theah64.retrokit.utils.EmptyDataManager;
+import com.theah64.retrokit.utils.SingletonToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +71,7 @@ public abstract class BaseRecyclerViewActivity<MODEL, RESPONSE_DATA, APIINTERFAC
     }
 
     protected void onItemAdded(MODEL data) {
-        Toast.makeText(this, R.string.Added, Toast.LENGTH_SHORT).show();
+        SingletonToast.makeText(this, R.string.Added, Toast.LENGTH_SHORT).show();
         getAdapter().getData().add(0, data);
         getAdapter().notifyItemInserted(0);
         getRecyclerView().scrollToPosition(0);
@@ -86,9 +87,9 @@ public abstract class BaseRecyclerViewActivity<MODEL, RESPONSE_DATA, APIINTERFAC
         onItemUpdated(index, newData);
     }
 
-    protected void onItemUpdated(int index,MODEL newData) {
+    protected void onItemUpdated(int index, MODEL newData) {
 
-        Toast.makeText(this, R.string.Updated, Toast.LENGTH_SHORT).show();
+        SingletonToast.makeText(this, R.string.Updated, Toast.LENGTH_SHORT).show();
         getAdapter().getData().remove(index);
         getAdapter().getData().add(index, newData);
         getAdapter().notifyItemChanged(index);
@@ -96,7 +97,7 @@ public abstract class BaseRecyclerViewActivity<MODEL, RESPONSE_DATA, APIINTERFAC
 
 
     protected void onItemRemoved(MODEL removedItem) {
-        Toast.makeText(this, R.string.Removed, Toast.LENGTH_SHORT).show();
+        SingletonToast.makeText(this, R.string.Removed, Toast.LENGTH_SHORT).show();
         final int index = getAdapter().getData().indexOf(removedItem);
         getAdapter().getData().remove(index);
         getAdapter().notifyItemRemoved(index);

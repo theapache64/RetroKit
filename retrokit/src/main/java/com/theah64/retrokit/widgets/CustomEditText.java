@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.joanzapata.iconify.IconDrawable;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
 import com.theah64.retrokit.R;
+import com.theah64.retrokit.utils.SingletonToast;
 import com.theah64.retrokit.widgets.utils.CustomWidgetUtils;
 
 import java.util.regex.Pattern;
@@ -147,7 +148,7 @@ public class CustomEditText extends AppCompatAutoCompleteTextView {
             }
 
             if (!isAllValid) {
-                Toast.makeText(context, R.string.Oops_validation_errors, Toast.LENGTH_SHORT).show();
+                SingletonToast.makeText(context, R.string.Oops_validation_errors, Toast.LENGTH_SHORT).show();
             }
 
             return isAllValid;
