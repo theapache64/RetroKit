@@ -53,6 +53,7 @@ public class RetroKit {
     private final int colorPrimary, colorPrimaryDark;
     private String errorMessage;
     private OnErrorTrueCallback errorCallback;
+    private int spinnerItem;
 
 
     public static RetroKit init(final Context context, Class<?> apiInterface, @ColorRes int colorPrimary, @ColorRes int colorPrimaryDark) {
@@ -72,10 +73,15 @@ public class RetroKit {
         this.colorPrimary = colorPrimary;
         this.colorPrimaryDark = colorPrimaryDark;
         this.defaultProgressIndicator = BallPulseSyncIndicator.class;
+        this.spinnerItem = android.R.layout.simple_spinner_item;
 
         PreferenceUtils.init(context);
     }
 
+    public RetroKit setCustomSpinnerItemRowLayout(int spinnerItem) {
+        this.spinnerItem = spinnerItem;
+        return this;
+    }
 
     public static SimpleDateFormat getDefaultDateFormat() {
         return defaultDateFormat;
@@ -228,5 +234,9 @@ public class RetroKit {
 
     public OnErrorTrueCallback getErrorCallback() {
         return errorCallback;
+    }
+
+    public int getCustomSpinnerItemRowLayout() {
+        return spinnerItem;
     }
 }

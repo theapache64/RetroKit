@@ -6,6 +6,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.theah64.retrokit.retro.RetroKit;
+
 import java.util.List;
 
 /**
@@ -67,7 +69,7 @@ public class SpinnerBinder<M extends SpinnerBinder.SpinnerItem> {
 
     public SpinnerBinder<M> bind() {
 
-        final ArrayAdapter<M> spinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, items);
+        final ArrayAdapter<M> spinnerAdapter = new ArrayAdapter<>(context, RetroKit.getInstance().getCustomSpinnerItemRowLayout(), items);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
