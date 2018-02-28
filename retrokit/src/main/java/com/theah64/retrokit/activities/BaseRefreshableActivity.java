@@ -21,7 +21,7 @@ public abstract class BaseRefreshableActivity<DATA> extends BaseProgressManActiv
     public abstract void loadData(boolean isClearList);
 
     public boolean isRefreshable() {
-        return true;
+        return false;
     }
 
 
