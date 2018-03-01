@@ -11,7 +11,6 @@ import android.preference.PreferenceManager;
 public class PreferenceUtils {
 
 
-
     private static SharedPreferences pref;
 
     public static void init(Context context) {
@@ -33,6 +32,10 @@ public class PreferenceUtils {
 
     public static void saveString(String key, String value) {
         pref.edit().putString(key, value).apply();
+    }
+
+    public static void saveString(String key, int value) {
+        pref.edit().putInt(key, value).apply();
     }
 
     public static String getString(String key) {
