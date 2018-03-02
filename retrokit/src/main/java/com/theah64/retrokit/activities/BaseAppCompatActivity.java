@@ -150,7 +150,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     }
 
     protected void savePref(String key, String value) {
-        PreferenceUtils.saveString(key, value);
+        PreferenceUtils.save(key, value);
     }
 
     protected String getPref(String key) {

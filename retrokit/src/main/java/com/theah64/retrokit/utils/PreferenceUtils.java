@@ -26,15 +26,11 @@ public class PreferenceUtils {
         return pref.getInt(key, -1);
     }
 
-    public static void saveInt(String key, int value) {
-        pref.edit().putInt(key, value).apply();
-    }
-
-    public static void saveString(String key, String value) {
+    public static void save(String key, String value) {
         pref.edit().putString(key, value).apply();
     }
 
-    public static void saveString(String key, int value) {
+    public static void save(String key, int value) {
         pref.edit().putInt(key, value).apply();
     }
 

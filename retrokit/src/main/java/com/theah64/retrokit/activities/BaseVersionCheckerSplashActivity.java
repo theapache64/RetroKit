@@ -5,14 +5,14 @@ import android.support.annotation.NonNull;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.theah64.retrokit.R;
+import com.theah64.retrokit.api.VersionChecker;
+import com.theah64.retrokit.api.response.VersionCheckerResponse;
 import com.theah64.retrokit.retro.BaseAPIResponse;
 import com.theah64.retrokit.retro.RetroKit;
 import com.theah64.retrokit.retro.RetrofitClient;
 import com.theah64.retrokit.utils.APIInterface;
 import com.theah64.retrokit.utils.CommonUtils;
 import com.theah64.retrokit.utils.PreferenceUtils;
-import com.theah64.retrokit.api.VersionChecker;
-import com.theah64.retrokit.api.response.VersionCheckerResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,7 +41,7 @@ public abstract class BaseVersionCheckerSplashActivity extends BaseSplashActivit
 
                     if (versionCheckerResponse != null && !versionCheckerResponse.isError()) {
                         System.out.println("New version code is " + versionCheckerResponse.getData().getLatestVersionCode() + ", Current version is " + currentVersionCode);
-                        PreferenceUtils.saveInt(VersionChecker.KEY_LATEST_VERSION_CODE, versionCheckerResponse.getData().getLatestVersionCode());
+                        PreferenceUtils.save(VersionChecker.KEY_LATEST_VERSION_CODE, versionCheckerResponse.getData().getLatestVersionCode());
                     }
 
                 }
