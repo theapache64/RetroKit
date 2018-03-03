@@ -68,6 +68,18 @@ public class DialogUtils {
                 .show();
     }
 
+
+    public void showSimpleDialog(@StringRes int title, String message, MaterialDialog.SingleButtonCallback onYesCallback) {
+        new MaterialDialog.Builder(context)
+                .title(title)
+                .content(message)
+                .positiveText(R.string.OK)
+                .onPositive(onYesCallback)
+                .build()
+                .show();
+    }
+
+
     public MaterialDialog getLoadingDialog(int message) {
         return new MaterialDialog.Builder(context)
                 .content(message)
