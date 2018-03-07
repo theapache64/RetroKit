@@ -56,7 +56,3 @@ That's it!
 * ProgressManager
 
 See the example app to see live demonstrations
-
-    
-
-
