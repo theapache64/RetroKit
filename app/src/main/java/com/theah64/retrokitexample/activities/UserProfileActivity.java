@@ -34,7 +34,7 @@ public class UserProfileActivity extends BaseDynamicActivity<GetUserProfileData,
     }
 
     @Override
-    protected int getMainViewID() {
+    public int getMainViewID() {
         return R.id.llMain;
     }
 

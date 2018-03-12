@@ -36,7 +36,7 @@ public class MoviesActivity extends BaseRecyclerViewActivity<Movie, GetMoviesDat
 
 
     @Override
-    protected int getMainViewID() {
+    public int getMainViewID() {
         return R.id.rvMovies;
     }
 

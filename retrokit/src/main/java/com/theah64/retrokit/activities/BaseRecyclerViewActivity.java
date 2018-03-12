@@ -71,12 +71,16 @@ public abstract class BaseRecyclerViewActivity<MODEL, RESPONSE_DATA, APIINTERFAC
     }
 
     protected void onItemAdded(MODEL data, boolean showToast) {
+        onItemAdded(data, 0, showToast);
+    }
+
+    protected void onItemAdded(MODEL data, int position, boolean showToast) {
         if (showToast) {
             SingletonToast.makeText(this, R.string.Added, Toast.LENGTH_SHORT).show();
         }
-        getAdapter().getData().add(0, data);
-        getAdapter().notifyItemInserted(0);
-        getRecyclerView().scrollToPosition(0);
+        getAdapter().getData().add(position, data);
+        getAdapter().notifyItemInserted(position);
+        getRecyclerView().scrollToPosition(position);
 
 
         if (emptyManager != null && getAdapter().getData().size() == 1) {

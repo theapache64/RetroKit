@@ -15,7 +15,7 @@ An android project kit integrated mainly with Retrofit and other popular utility
 **Step one - Add to build.gradle**
 
 ```groovy
-compile 'com.theah64.retrokit:retrokit:2.0.0'
+compile 'com.theah64.retrokit:retrokit:2.0.1'
 ```
 
 **Step two - Initialize RetroKit in application instance**

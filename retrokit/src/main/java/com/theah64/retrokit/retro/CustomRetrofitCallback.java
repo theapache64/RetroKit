@@ -76,7 +76,7 @@ public abstract class CustomRetrofitCallback<T extends BaseAPIResponse<D>, D> im
     }
 
     @Override
-    public void onFailure(Call<T> call, Throwable t) {
+    public void onFailure(@NonNull Call<T> call, @NonNull Throwable t) {
         t.printStackTrace();
         if (activity != null && activity.isActive()) {
             activity.getProgressMan().showMainView();
