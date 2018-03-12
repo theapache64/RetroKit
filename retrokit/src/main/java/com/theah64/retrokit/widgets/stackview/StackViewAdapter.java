@@ -9,7 +9,7 @@ import java.util.List;
  * Created by theapache64 on 20/2/18.
  */
 
-public abstract class StackViewAdapter<MODEL, VH extends BaseViewHolder> {
+public abstract class StackViewAdapter<MODEL, VH extends StackViewHolder> {
 
     private final List<MODEL> dataList;
 

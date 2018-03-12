@@ -15,23 +15,40 @@ import java.util.List;
 
 public class VerticalStackView extends LinearLayout {
 
+    private StackViewAdapter adapter;
+    private LayoutInflater layoutInflater;
+
     public VerticalStackView(Context context) {
         super(context);
+        init();
+    }
+
+    private void init() {
+        this.layoutInflater = LayoutInflater.from(getContext());
     }
 
     public VerticalStackView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        init();
     }
 
     public void setAdapter(StackViewAdapter adapter) {
+
+        this.adapter = adapter;
+
         setOrientation(VERTICAL);
         final List dataList = adapter.getDataList();
-        final LayoutInflater layoutInflater = LayoutInflater.from(getContext());
         for (Object item : dataList) {
             final View row = layoutInflater.inflate(adapter.getLayoutRow(), this, false);
             adapter.bind(adapter.getViewHolder(row), item);
             addView(row);
         }
+
     }
 
+    public void addView(int i, Object item) {
+        final View row = layoutInflater.inflate(adapter.getLayoutRow(), this, false);
+        adapter.bind(adapter.getViewHolder(row), item);
+        addView(row);
+    }
 }

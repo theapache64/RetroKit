@@ -70,8 +70,10 @@ public abstract class BaseRecyclerViewActivity<MODEL, RESPONSE_DATA, APIINTERFAC
         return adapter;
     }
 
-    protected void onItemAdded(MODEL data) {
-        SingletonToast.makeText(this, R.string.Added, Toast.LENGTH_SHORT).show();
+    protected void onItemAdded(MODEL data, boolean showToast) {
+        if (showToast) {
+            SingletonToast.makeText(this, R.string.Added, Toast.LENGTH_SHORT).show();
+        }
         getAdapter().getData().add(0, data);
         getAdapter().notifyItemInserted(0);
         getRecyclerView().scrollToPosition(0);
@@ -80,6 +82,10 @@ public abstract class BaseRecyclerViewActivity<MODEL, RESPONSE_DATA, APIINTERFAC
         if (emptyManager != null && getAdapter().getData().size() == 1) {
             emptyManager.hideEmpty();
         }
+    }
+
+    protected void onItemAdded(MODEL data) {
+        onItemAdded(data, false);
     }
 
     protected void onItemUpdated(MODEL old, MODEL newData) {
@@ -96,8 +102,14 @@ public abstract class BaseRecyclerViewActivity<MODEL, RESPONSE_DATA, APIINTERFAC
     }
 
 
-    protected void onItemRemoved(MODEL removedItem) {
-        SingletonToast.makeText(this, R.string.Removed, Toast.LENGTH_SHORT).show();
+    public void onItemRemoved(MODEL removedItem) {
+        onItemRemoved(removedItem, false);
+    }
+
+    protected void onItemRemoved(MODEL removedItem, boolean showToast) {
+        if (showToast) {
+            SingletonToast.makeText(this, R.string.Removed, Toast.LENGTH_SHORT).show();
+        }
         final int index = getAdapter().getData().indexOf(removedItem);
         getAdapter().getData().remove(index);
         getAdapter().notifyItemRemoved(index);

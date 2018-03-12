@@ -40,7 +40,7 @@ public class BaseTableAdapter extends AbstractTableAdapterWithGhostableColumns<C
                 layout = LayoutInflater.from(m_jContext).inflate(R.layout.tableview_cell_layout,
                         parent, false);
 
-                // Create a Cell BaseViewHolder
+                // Create a Cell StackViewHolder
                 return new CellViewHolder(layout);
         }
     }
@@ -78,7 +78,7 @@ public class BaseTableAdapter extends AbstractTableAdapterWithGhostableColumns<C
         View layout = LayoutInflater.from(m_jContext).inflate(R.layout
                 .tableview_row_header_layout, parent, false);
 
-        // Create a Row Header BaseViewHolder
+        // Create a Row Header StackViewHolder
         return new RowHeaderViewHolder(layout);
     }
 

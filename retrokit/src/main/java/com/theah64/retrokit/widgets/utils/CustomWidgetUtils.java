@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
+import com.joanzapata.iconify.Icon;
 import com.joanzapata.iconify.IconDrawable;
 import com.theah64.retrokit.R;
 
@@ -24,6 +25,11 @@ public class CustomWidgetUtils {
     private final int isStrikeThroughRes;
     private final int isRequiredRes;
     private boolean isRequired;
+    private TextView iconView;
+
+    private int iconLeftColor;
+    private int iconLeftSize;
+    private int iconLeftPadding;
 
     public CustomWidgetUtils(int[] styleableRes, int iconLeftRes, int iconLeftColorRes, int iconLeftSizeRes, int iconLeftPaddingRes, int isStrikeThroughRes, int isRequired) {
         this.styleableRes = styleableRes;
@@ -35,38 +41,41 @@ public class CustomWidgetUtils {
         this.isRequiredRes = isRequired;
     }
 
-    public CustomWidgetUtils init(final TextView v, @Nullable AttributeSet attrs) {
+    public CustomWidgetUtils init(final TextView iconView, @Nullable AttributeSet attrs) {
+
+        this.iconView = iconView;
 
         if (attrs != null) {
-            //Collecting custom attrs
-            TypedArray ta = v.getContext().obtainStyledAttributes(attrs, styleableRes, 0, 0);
 
-            if (!v.isInEditMode()) {
+            //Collecting custom attrs
+            TypedArray ta = iconView.getContext().obtainStyledAttributes(attrs, styleableRes, 0, 0);
+
+            if (!iconView.isInEditMode()) {
 
                 String iconLeft = ta.getString(iconLeftRes);
                 if (isRequiredRes != -1) {
                     this.isRequired = ta.getBoolean(isRequiredRes, false);
                 }
 
-                int iconLeftColor = -1;
-                int iconLeftSize = -1;
-                int iconLeftPadding = -1;
+                iconLeftColor = -1;
+                iconLeftSize = -1;
+                iconLeftPadding = -1;
 
                 if (iconLeft != null) {
-                    iconLeftColor = ta.getColor(iconLeftColorRes, ContextCompat.getColor(v.getContext(), R.color.grey_300));
+                    iconLeftColor = ta.getColor(iconLeftColorRes, ContextCompat.getColor(iconView.getContext(), R.color.grey_300));
                     iconLeftSize = (int) ta.getDimension(iconLeftSizeRes, 15);
                     iconLeftPadding = (int) ta.getDimension(iconLeftPaddingRes, 10);
                 } else if (isRequired) {
-                    iconLeft = v.getContext().getString(R.string.fa_asterisk);
-                    iconLeftColor = ContextCompat.getColor(v.getContext(), R.color.red_500);
+                    iconLeft = iconView.getContext().getString(R.string.fa_asterisk);
+                    iconLeftColor = ContextCompat.getColor(iconView.getContext(), R.color.red_500);
                     iconLeftSize = 6;
                     iconLeftPadding = 10;
                 }
 
                 if (iconLeft != null) {
-                    final IconDrawable icon = new IconDrawable(v.getContext(), iconLeft).color(iconLeftColor).sizeDp(iconLeftSize);
-                    v.setCompoundDrawables(icon, null, null, null);
-                    v.setCompoundDrawablePadding(iconLeftPadding);
+                    final IconDrawable icon = new IconDrawable(iconView.getContext(), iconLeft).color(iconLeftColor).sizeDp(iconLeftSize);
+                    iconView.setCompoundDrawables(icon, null, null, null);
+                    iconView.setCompoundDrawablePadding(iconLeftPadding);
                 }
             }
 
@@ -74,7 +83,7 @@ public class CustomWidgetUtils {
             if (isStrikeThroughRes != -1) {
                 final boolean isStrikeThrough = ta.getBoolean(isStrikeThroughRes, false);
                 if (isStrikeThrough) {
-                    v.setPaintFlags(v.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    iconView.setPaintFlags(iconView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 }
             }
 
@@ -86,5 +95,13 @@ public class CustomWidgetUtils {
 
     public boolean isRequired() {
         return isRequired;
+    }
+
+    public void setIconLeft(Icon iconRes) {
+        final IconDrawable icon = new IconDrawable(iconView.getContext(), iconRes)
+                .color(iconLeftColor)
+                .sizeDp(iconLeftSize);
+        iconView.setCompoundDrawables(icon, null, null, null);
+        iconView.setCompoundDrawablePadding(iconLeftPadding);
     }
 }

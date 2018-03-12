@@ -17,6 +17,8 @@ import com.theah64.retrokit.widgets.utils.CustomWidgetUtils;
 
 public class CustomTextView extends AppCompatTextView {
 
+    private CustomWidgetUtils customWidgetUtils;
+
     public CustomTextView(Context context) {
         super(context);
         init(null);
@@ -34,7 +36,7 @@ public class CustomTextView extends AppCompatTextView {
 
 
     private void init(AttributeSet attrs) {
-        new CustomWidgetUtils(
+        customWidgetUtils = new CustomWidgetUtils(
                 R.styleable.CustomTextView,
                 R.styleable.CustomTextView_iconLeft,
                 R.styleable.CustomTextView_iconLeftColor,
@@ -44,6 +46,9 @@ public class CustomTextView extends AppCompatTextView {
                 -1).init(this, attrs);
     }
 
+    public CustomWidgetUtils getCustomWidgetUtils() {
+        return customWidgetUtils;
+    }
 
     public static void setTextAdvanced(TextView textView, String data) {
         textView.setVisibility(View.VISIBLE);

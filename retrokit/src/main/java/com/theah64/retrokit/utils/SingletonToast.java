@@ -28,7 +28,7 @@ public class SingletonToast {
             toast = Toast.makeText(context, message, length);
         }
 
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(length);
         toast.setText(message);
         return toast;
     }
