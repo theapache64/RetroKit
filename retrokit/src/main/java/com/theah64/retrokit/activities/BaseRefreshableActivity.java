@@ -95,9 +95,13 @@ public abstract class BaseRefreshableActivity<DATA> extends BaseProgressManActiv
         };
     }
 
-    protected abstract String getActionBarSubTitle();
+    protected String getActionBarSubTitle(){
+        return null;
+    }
 
-    protected abstract String getActionBarTitle();
+    protected String getActionBarTitle(){
+        return null;
+    }
 
 
 }
