@@ -4,11 +4,11 @@ package com.theah64.retrokit.utils;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by theapache64 on 16/11/17.
@@ -23,7 +23,7 @@ public class PermissionUtils {
     private final Callback callback;
     private final AppCompatActivity activity;
 
-    public PermissionUtils(int requestCode, @NotNull Context context, String[] permissionsNeeded, @NotNull Callback callback, @Nullable AppCompatActivity activity) {
+    public PermissionUtils(int requestCode, @NonNull Context context, String[] permissionsNeeded, @NonNull Callback callback, @Nullable AppCompatActivity activity) {
         this.requestCode = requestCode;
         this.context = context;
         this.permissionsNeeded = permissionsNeeded;
@@ -31,7 +31,7 @@ public class PermissionUtils {
         this.activity = activity;
     }
 
-    public PermissionUtils(int requestCode, @NotNull Context context, String[] permissionsNeeded, @NotNull Callback callback) {
+    public PermissionUtils(int requestCode, @NonNull Context context, String[] permissionsNeeded, @NonNull Callback callback) {
         this(requestCode, context, permissionsNeeded, callback, null);
     }
 
