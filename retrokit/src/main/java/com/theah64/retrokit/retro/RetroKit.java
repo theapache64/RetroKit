@@ -3,6 +3,7 @@ package com.theah64.retrokit.retro;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.ColorRes;
+import android.support.annotation.NonNull;
 
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
@@ -14,14 +15,20 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.theah64.bugmailer.core.BugMailer;
 import com.theah64.bugmailer.core.BugMailerConfig;
+import com.theah64.bugmailer.core.BugMailerNode;
 import com.theah64.bugmailer.exceptions.BugMailerException;
+import com.theah64.bugmailer.models.Node;
 import com.theah64.retrokit.R;
 import com.theah64.retrokit.callbacks.OnErrorTrueCallback;
+import com.theah64.retrokit.exceptions.ServerException;
 import com.theah64.retrokit.utils.PreferenceUtils;
+import com.theah64.retrokit.utils.RetroKitNetworkInterceptor;
 import com.wang.avi.Indicator;
 import com.wang.avi.indicators.BallPulseSyncIndicator;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -202,13 +209,19 @@ public class RetroKit {
                 config.addRecipientEmail(r);
             }
         }
+        enableBugMailer(config);
+        return this;
+    }
+
+    public RetroKit enableBugMailer(BugMailerConfig config) {
         try {
-            BugMailer.init(context, config);
+            BugMailer.INSTANCE.init(context, config);
         } catch (BugMailerException e) {
             e.printStackTrace();
         }
         return this;
     }
+
 
     public RetroKit setDefaultDateFormat(SimpleDateFormat defaultDateFormat) {
         RetroKit.defaultDateFormat = defaultDateFormat;
@@ -239,4 +252,5 @@ public class RetroKit {
     public int getCustomSpinnerItemRowLayout() {
         return spinnerItem;
     }
+
 }

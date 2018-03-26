@@ -3,6 +3,8 @@ package com.theah64.retrokitexample.utils
 import android.app.Application
 
 import com.joanzapata.iconify.fonts.FontAwesomeModule
+import com.theah64.bugmailer.core.BugMailerConfig
+import com.theah64.retrokit.exceptions.ServerException
 import com.theah64.retrokit.retro.RetroKit
 import com.theah64.retrokitexample.R
 import com.theah64.retrokitexample.rest.APIInterface
@@ -17,9 +19,15 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
+
         RetroKit.init(this, APIInterface::class.java, R.color.colorPrimary, R.color.colorPrimaryDark)
                 .setRetrofitBaseURL(BASE_URL)
                 .addIconModule(FontAwesomeModule())
+                .enableNetworkLog()
+                .enableBugMailer(
+                        BugMailerConfig("theapache64@gmail.com")
+                                .addRecipientEmail("anju@cybaze.com", ServerException::class.java)
+                )
                 .setDefaultFontPathAsRobotoRegular()
                 .setDefaultProgressIndicator(BallPulseSyncIndicator::class.java)
     }

@@ -16,7 +16,7 @@ ext {
     siteUrl = 'https://github.com/theapache64/retrokit'
     gitUrl = 'https://github.com/theapache64/retrokit.git'
 
-    libraryVersion = '2.0.4'
+    libraryVersion = '2.0.5'
 
     developerId = 'theapache64'
     developerName = 'theapache64'
@@ -35,8 +35,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode 204
-        versionName "2.0.4"
+        versionCode 205
+        versionName "2.0.5"
         multiDexEnabled true
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -75,7 +75,7 @@ dependencies {
     compile 'com.daimajia.androidanimations:library:2.3@aar'
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile 'com.theah64.bugmailer:bugmailer:1.2.2'
+
     compile 'com.afollestad.material-dialogs:commons:0.9.6.0'
 
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
@@ -84,7 +84,7 @@ dependencies {
     compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
     compile 'com.evrencoskun.library:tableview:0.8.5.4'
     compile 'com.karumi:dexter:4.2.0'
-
+    compile 'com.theah64.bugmailer:bugmailer:2.0.1'
 
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

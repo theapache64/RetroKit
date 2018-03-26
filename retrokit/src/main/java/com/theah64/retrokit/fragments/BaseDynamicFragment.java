@@ -2,7 +2,9 @@ package com.theah64.retrokit.fragments;
 
 import android.support.annotation.NonNull;
 
+import com.theah64.bugmailer.core.BugMailer;
 import com.theah64.retrokit.R;
+import com.theah64.retrokit.exceptions.ServerException;
 import com.theah64.retrokit.retro.BaseAPIResponse;
 import com.theah64.retrokit.retro.RetroKit;
 import com.theah64.retrokit.retro.RetrofitClient;
@@ -44,6 +46,7 @@ public abstract class BaseDynamicFragment<DATA, APIINTERFACE> extends BaseRefres
                         getProgressMan().showMainView();
                     }
                 } else {
+                    BugMailer.INSTANCE.report(new ServerException());
                     getProgressMan().showError(ProgressManager.ERROR_TYPE_SERVER_ERROR, R.string.server_error);
                 }
 

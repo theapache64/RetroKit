@@ -4,6 +4,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.theah64.bugmailer.core.BugMailer;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 
@@ -42,7 +44,7 @@ public class RetroKitNetworkInterceptor implements Interceptor {
         curlCommandBuilder.append("curl ");
         curlCommandBuilder.append("-X ");
         // add method
-        curlCommandBuilder.append(request.method().toUpperCase() + " ");
+        curlCommandBuilder.append(request.method().toUpperCase()).append(" ");
         // adding headers
         for (String headerName : request.headers().names()) {
             addHeader(headerName, request.headers().get(headerName));
@@ -68,9 +70,12 @@ public class RetroKitNetworkInterceptor implements Interceptor {
         curlCommandBuilder.append(" \"").append(request.url().toString()).append("\"");
         curlCommandBuilder.append(" -L | jq '.'");
 
+        BugMailer.INSTANCE.setRecentCurl(curlCommandBuilder.toString());
+
         CurlPrinter.print(tag, request.url().toString(), curlCommandBuilder.toString());
         return chain.proceed(request);
     }
+
 
     private void addHeader(String headerName, String headerValue) {
         curlCommandBuilder.append("-H " + "\"").append(headerName).append(": ").append(headerValue).append("\" ");

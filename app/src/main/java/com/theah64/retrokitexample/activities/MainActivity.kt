@@ -4,17 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-
+import butterknife.BindView
 import com.theah64.retrokit.activities.BaseAppCompatActivity
 import com.theah64.retrokit.adapters.BaseRecyclerViewAdapter
 import com.theah64.retrokit.adapters.SimpleRecyclerViewAdapter
 import com.theah64.retrokit.models.SimpleModel
 import com.theah64.retrokitexample.R
 import com.theah64.retrokitexample.model.MenuItem
-
-import java.util.ArrayList
-
-import butterknife.BindView
+import java.util.*
 
 class MainActivity : BaseAppCompatActivity() {
 
@@ -30,8 +27,8 @@ class MainActivity : BaseAppCompatActivity() {
         menuItems.add(MenuItem("Dynamic activity example", "User profile", UserProfileActivity::class.java))
         menuItems.add(MenuItem("RecyclerView example", "Top rated movies", MoviesActivity::class.java))
 
-        rvMenuItems!!.layoutManager = LinearLayoutManager(this)
-        rvMenuItems!!.adapter = SimpleRecyclerViewAdapter(menuItems, BaseRecyclerViewAdapter.Callback { simpleModel, position ->
+        rvMenuItems.layoutManager = LinearLayoutManager(this)
+        rvMenuItems.adapter = SimpleRecyclerViewAdapter(menuItems, BaseRecyclerViewAdapter.Callback { simpleModel, position ->
             val i = Intent(this@MainActivity, (simpleModel as MenuItem).classToLaunch)
             startActivity(i)
         })
