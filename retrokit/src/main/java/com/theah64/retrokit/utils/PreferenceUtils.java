@@ -25,9 +25,16 @@ public class PreferenceUtils {
     public static int getInt(String key) {
         return pref.getInt(key, -1);
     }
+    public static boolean getBoolean(String key) {
+        return pref.getBoolean(key, false);
+    }
 
     public static void save(String key, String value) {
         pref.edit().putString(key, value).apply();
+    }
+
+    public static void save(String key, boolean value) {
+        pref.edit().putBoolean(key, value).apply();
     }
 
     public static void save(String key, int value) {

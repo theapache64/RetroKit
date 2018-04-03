@@ -47,7 +47,7 @@ public class VerticalStackView extends LinearLayout {
     }
 
     public void addView(int i, Object item) {
-        final View row = layoutInflater.inflate(adapter.getLayoutRow(), this, false);
+        final View row = layoutInflater.inflate(adapter.getLayoutRow(), null, false);
         adapter.bind(adapter.getViewHolder(row), item);
         addView(row);
     }
