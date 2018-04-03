@@ -1,5 +1,5 @@
 # RetroKit
-An android project kit integrated mainly with Retrofit and other popular utility libraries.
+An android project kit integrated mainly with Retrofit and other popular utility libraries
 
 ### Libraries integrated
 * [Retrofit](https://github.com/square/retrofit)
