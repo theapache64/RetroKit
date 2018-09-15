@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/retrokit/retrokit.iml" filepath="$PROJECT_DIR$/retrokit/retrokit.iml" />
-      <module fileurl="file://$PROJECT_DIR$/retrokit_example.iml" filepath="$PROJECT_DIR$/retrokit_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/retrokit.iml" filepath="$PROJECT_DIR$/retrokit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/retrokit/retrokit-retrokit.iml" filepath="$PROJECT_DIR$/retrokit/retrokit-retrokit.iml" />
     </modules>
   </component>
 </project>
