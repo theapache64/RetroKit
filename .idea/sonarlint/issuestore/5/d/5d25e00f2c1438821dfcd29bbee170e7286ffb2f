@@ -1,0 +1,7 @@
+
+T
+squid:S106l"9Replace this use of System.out or System.err by a logger.(Ä‘µÿÿÿÿÿ
+nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(êÿı‚üÿÿÿÿ
+asquid:S00119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(Ğ§¢ƒ
+asquid:S00119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(Ğ§¢ƒ
+?squid:S1148L"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ

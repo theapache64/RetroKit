@@ -215,7 +215,7 @@ public class RetroKit {
 
     public RetroKit enableBugMailer(BugMailerConfig config) {
         try {
-            BugMailer.INSTANCE.init(context, config);
+            BugMailer.init(context, config);
         } catch (BugMailerException e) {
             e.printStackTrace();
         }

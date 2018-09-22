@@ -25,6 +25,9 @@ public class App extends Application {
                 .setRetrofitBaseURL(BASE_URL)
                 .addIconModule(new FontAwesomeModule())
                 .setDefaultFontPathAsRobotoRegular()
+                .enableVersionCheck()
+                .enableImageLoader()
+                .enableNetworkLog()
                 .setDefaultProgressIndicator(BallPulseSyncIndicator.class);
     }
 }

@@ -70,7 +70,8 @@ public class RetroKitNetworkInterceptor implements Interceptor {
         curlCommandBuilder.append(" \"").append(request.url().toString()).append("\"");
         curlCommandBuilder.append(" -L | jq '.'");
 
-        BugMailer.INSTANCE.setRecentCurl(curlCommandBuilder.toString());
+        // TODO : Below had support in BM2.0, but removed later. please implement it again.
+        //BugMailer.INSTANCE.setRecentCurl(curlCommandBuilder.toString());
 
         CurlPrinter.print(tag, request.url().toString(), curlCommandBuilder.toString());
         return chain.proceed(request);

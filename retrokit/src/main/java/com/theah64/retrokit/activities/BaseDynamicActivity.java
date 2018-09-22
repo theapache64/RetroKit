@@ -65,7 +65,7 @@ public abstract class BaseDynamicActivity<DATA, APIINTERFACE> extends BaseRefres
                             getProgressMan().showMainView();
                         }
                     } else {
-                        BugMailer.INSTANCE.report(new ServerException());
+                        BugMailer.report(new ServerException());
                         getProgressMan().showError(ProgressManager.ERROR_TYPE_SERVER_ERROR, R.string.server_error);
                     }
 
