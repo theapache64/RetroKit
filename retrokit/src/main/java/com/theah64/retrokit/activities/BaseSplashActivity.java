@@ -52,7 +52,7 @@ public abstract class BaseSplashActivity extends BaseAppCompatActivity {
             tvTextLogo.setTextColor(ContextCompat.getColor(this, getTextLogoColor()));
         }
 
-        ((ImageView) findViewById(R.id.ivBg)).setVisibility(isWhitePatternBg() ? View.VISIBLE : View.GONE);
+        findViewById(R.id.ivBg).setVisibility(isWhitePatternBg() ? View.VISIBLE : View.GONE);
 
         startSplashEngine();
     }

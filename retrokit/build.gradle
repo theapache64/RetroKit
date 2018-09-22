@@ -65,7 +65,7 @@ dependencies {
     api 'uk.co.chrisjenx:calligraphy:2.3.0'
     api 'com.daimajia.easing:library:2.0@aar'
     api 'com.daimajia.androidanimations:library:2.3@aar'
-    api 'com.jakewharton:butterknife:8.8.1'
+    compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     api 'com.afollestad.material-dialogs:commons:0.9.6.0'
