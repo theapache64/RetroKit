@@ -27,6 +27,7 @@ public class SplashActivity extends BaseSplashActivity {
 
     @Override
     public void onSplashStart() {
+        // not used
     }
 
     @Override

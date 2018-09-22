@@ -32,6 +32,7 @@ public class MainActivity extends BaseAppCompatActivity {
         menuItems.add(new MenuItem("Splash activity example", "Splash activity simplified", SplashActivity.class));
         menuItems.add(new MenuItem("Dynamic activity example", "User profile", UserProfileActivity.class));
         menuItems.add(new MenuItem("RecyclerView example", "Top rated movies", MoviesActivity.class));
+        menuItems.add(new MenuItem("Table example", "Top rated movies as tables", TableActivity.class));
 
         rvMenuItems.setLayoutManager(new LinearLayoutManager(this));
         rvMenuItems.setAdapter(new SimpleRecyclerViewAdapter(menuItems, new BaseRecyclerViewAdapter.Callback<SimpleModel>() {

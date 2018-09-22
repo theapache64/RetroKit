@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".activities.MoviesActivity" />
         <activity android:name=".activities.UserProfileActivity" />
+        <activity android:name=".activities.TableActivity" />
         <activity
             android:name=".activities.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
